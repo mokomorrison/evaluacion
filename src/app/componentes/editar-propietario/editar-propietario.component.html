@@ -1,0 +1,69 @@
+<br>
+<div class="card">
+  <div class="card-header">
+    Editar propietario
+  </div>
+  <div class="card-body">
+    <form [formGroup]="formularioPropietario" (ngSubmit)="editarDatos()" class="row g-3 needs-validation" novalidate>
+      <div class="col-md-6">
+        <label for="validationCustom01" class="form-label">Nombres</label>
+        <input type="text" class="form-control" formControlName="nombre" id="validationCustom01" value="" required>
+        <div class="valid-feedback">
+          ¡Completo!
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label for="validationCustom02" class="form-label">Apellidos</label>
+        <input type="text" class="form-control" formControlName="apellidos" id="validationCustom02" value="" required>
+        <div class="valid-feedback">
+          ¡Completo!
+        </div>
+      </div>
+      <div class="col-md-3">
+        <label for="validationCustomUsername" class="form-label">Identidad</label>
+        <div class="input-group has-validation">
+          <span class="input-group-text" id="inputGroupPrepend">DNI</span>
+          <input type="text" class="form-control" formControlName="identificacion" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+          <div class="invalid-feedback">
+            Agregue número de identidad
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <label for="validationCustom03" class="form-label">Fecha de nacimiento</label>
+        <input type="date" class="form-control" formControlName="fecha_nacimiento" id="validationCustom03" required>
+        <div class="invalid-feedback">
+          Agregue fecha de nacimiento
+        </div>
+      </div>
+      <div class="col-md-3">
+        <label for="validationCustom05" class="form-label">Teléfono</label>
+        <input type="text" class="form-control" formControlName="telefono" id="validationCustom05" required>
+        <div class="invalid-feedback">
+          Proporcione un número de teléfono
+        </div>
+      </div>
+      <div class="col-md-3">
+        <label for="validationCustom05" class="form-label">Email</label>
+        <input type="email" class="form-control" formControlName="email" id="validationCustom05" required>
+        <div class="invalid-feedback">
+          Proporcione una dirección de correo electrónico
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="mb-3">
+          <label for="validationTextarea" class="form-label">Dirección</label>
+          <textarea class="form-control" formControlName="direccion" id="validationTextarea" placeholder="Required example textarea" required></textarea>
+          <div class="invalid-feedback">
+           Agregue una dirección.
+          </div>
+        </div>
+      </div>
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button class="btn btn-primary me-md" type="summit">Guardar</button>
+        <button class="btn btn-danger" routerLink="/listar-propietario" type="button">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>
+

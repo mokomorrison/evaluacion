@@ -1,0 +1,43 @@
+<br>
+<h3>Listar propietarios</h3>
+<div class="card">
+
+  <div class="card-header">
+    <button class="btn btn-success" routerLink="/agregar-propietario" type="button">Crear</button>
+  </div>
+  <div class="card-body">
+    <table class="table table-striped|sm|bordered|hover|inverse table-inverse table-responsive">
+      <thead class="thead-inverse|thead-default">
+        <tr>
+          <th>Código</th>
+          <th>Identidad</th>
+          <th>Nombre</th>
+          <th>Apellidos</th>
+          <th>Fecha de Nacimiento</th>
+          <th>Dirección</th>
+          <th>Teléfono</th>
+          <th>Email</th>
+          <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let propietario of Propietario; let iControl=index" >
+            <td>{{ propietario["id"] }}</td>
+            <td>{{ propietario["identificacion"] }}</td>
+            <td>{{ propietario["nombre"] }}</td>
+            <td>{{ propietario["apellidos"] }}</td>
+            <td>{{ propietario["fecha_nacimiento"] }}</td>
+            <td>{{ propietario["direccion"] }}</td>
+            <td>{{ propietario["telefono"] }}</td>
+            <td>{{ propietario["email"] }}</td>
+            <td>
+              <a class="btn btn-info" routerLink="/editar-propietario/{{ propietario['id'] }}">  Editar </a> | <a class="btn btn-danger" (click)="borrar(propietario['id'])">Borrar</a>
+          </tr>
+        </tbody>
+    </table>
+
+  </div>
+  <div class="card-footer text-muted">
+    Paginación
+  </div>
+</div>
