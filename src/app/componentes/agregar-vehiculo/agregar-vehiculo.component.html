@@ -1,1 +1,65 @@
-<p>agregar-vehiculo works!</p>
+<br>
+<div class="card">
+  <div class="card-header">
+    Agregar VehÍculo
+  </div>
+  <div class="card-body">
+    <form [formGroup]="formularioVehiculo" (ngSubmit)="enviarDatos()" class="row g-3 needs-validation" novalidate>
+      <div class="col-md-6">
+        <label for="validationCustom01" class="form-label">Placa</label>
+        <input type="text" class="form-control" formControlName="placa" id="validationCustom01" value="" required>
+        <div class="valid-feedback">
+          ¡Completo!
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label for="validationCustom02" class="form-label">Vin</label>
+        <input type="text" class="form-control" formControlName="vin" id="validationCustom02" value="" required>
+        <div class="valid-feedback">
+          ¡Completo!
+        </div>
+      </div>
+      <div class="col-md-3">
+        <label for="validationCustomUsername" class="form-label">Línea</label>
+        <div class="input-group has-validation">
+          <input type="text" class="form-control" formControlName="linea_id" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+          <div class="invalid-feedback">
+            Agregue Línea
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <label for="validationCustom03" class="form-label">Cilindraje</label>
+        <input type="text" class="form-control" formControlName="cilindraje" id="validationCustom03" required>
+        <div class="invalid-feedback">
+          Agregue Cilindraje
+        </div>
+      </div>
+      <div class="col-md-3">
+        <label for="validationCustom05" class="form-label">Color</label>
+        <input type="text" class="form-control" formControlName="color_id" id="validationCustom05" required>
+        <div class="invalid-feedback">
+          Agregue Color
+        </div>
+      </div>
+      <div class="col-md-3">
+        <label for="validationCustom05" class="form-label">Chasis</label>
+        <input type="email" class="form-control" formControlName="chasis" id="validationCustom05" required>
+        <div class="invalid-feedback">
+          Agregue Chasis
+        </div>
+      </div>
+      <div class="col-md-3">
+        <label for="validationCustom05" class="form-label">Tipo de Vehículo</label>
+        <input type="text" class="form-control" formControlName="tipo_vehiculo_id" id="validationCustom06" required>
+        <div class="invalid-feedback">
+          Agregue Chasis
+        </div>
+      </div>
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button class="btn btn-primary me-md" type="submit">Guardar</button>
+        <button class="btn btn-danger" routerLink="/listar-vehiculo" type="button">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>

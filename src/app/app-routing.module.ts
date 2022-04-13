@@ -13,6 +13,9 @@ import { AgregarVehiculoComponent } from './componentes/agregar-vehiculo/agregar
 import { EditarVehiculoComponent } from './componentes/editar-vehiculo/editar-vehiculo.component';
 import { ListarVehiculoComponent } from './componentes/listar-vehiculo/listar-vehiculo.component';
 
+/*Para Informe */
+import { InformeComponent } from './componentes/informe/informe.component';
+
 
 
 const routes: Routes = [
@@ -32,6 +35,8 @@ const routes: Routes = [
   {path: 'listar-vehiculo', component:ListarVehiculoComponent},
   {path: 'editar-vehiculo/:id', component:EditarVehiculoComponent},
 
+  /*Ruta para informe*/
+  {path: 'informe', component:InformeComponent},
 
 
 ];

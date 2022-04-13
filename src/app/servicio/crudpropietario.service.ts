@@ -10,8 +10,11 @@ import { GLOBAL } from './global';
 export class CrudpropietarioService {
   public url:string;
   data: any;
+  //filtroPropietario:string='';
+
   constructor(private http:HttpClient) {
     this.url=GLOBAL.url;
+
    }
 
   getData():Observable<any>{
@@ -29,5 +32,28 @@ export class CrudpropietarioService {
 
   deleteData(_id:any):Observable<any>{
     return this.http.delete(this.url+'data.php/?id='+_id);
+  }
+
+  /*Para vehiculo */
+  getDataV():Observable<any>{
+    return this.http.get(this.url+'dataV.php');
+  }
+
+  insertDataV(_placa:string,_vin:string,_linea_id:string,_cilindrada:string,_color_id:string,_chasis:string,_tipo_vehiculo_id:string):Observable<any>{
+    return this.http.post(this.url+'dataV.php',{placa:_placa,vin:_vin,linea_id:_linea_id,cilindrada:_cilindrada,color_id:_color_id,chasis:_chasis,tipo_vehiculo_id:_tipo_vehiculo_id});
+  }
+
+  updateDataV(_id:string,_placa:string,_vin:string,_linea_id:string,_cilindrada:string,_color_id:string,_chasis:string,_tipo_vehiculo_id:string):Observable<any>{
+    console.log(_id);
+    return this.http.put(this.url+'dataV.php',{id:_id,placa:_placa,vin:_vin,linea_id:_linea_id,cilindrada:_cilindrada,color_id:_color_id,chasis:_chasis,tipo_vehiculo_id:_tipo_vehiculo_id});
+  }
+
+  deleteDataV(_id:any):Observable<any>{
+    return this.http.delete(this.url+'dataV.php/?id='+_id);
+  }
+
+  /*Para Informe */
+  getDataI():Observable<any>{
+    return this.http.get(this.url+'dataI.php');
   }
 }

@@ -1,9 +1,16 @@
-<br>
+<br />
 <h3>Listar propietarios</h3>
 <div class="card">
-
   <div class="card-header">
-    <button class="btn btn-success" routerLink="/agregar-propietario" type="button">Crear</button>
+    <div style="display: flex; justify-content: space-between;">
+      <div> <button class="btn btn-success" routerLink="/agregar-propietario" type="button">Crear</button></div>
+      <div class="pull-right">
+        <form class="d-flex" style="display: flex; justify-content: flex-end">
+        <input class="form-control me-2" tabindex="-1" type="search"  aria-label="Buscar" >
+        <button class="btn btn-outline-primary" type="submit">Buscar</button>
+      </form>
+    </div>
+    </div>
   </div>
   <div class="card-body">
     <table class="table table-striped|sm|bordered|hover|inverse table-inverse table-responsive">
@@ -17,11 +24,11 @@
           <th>Dirección</th>
           <th>Teléfono</th>
           <th>Email</th>
-          <th>Acciones</th>
+          <th class="justify-center">Acciones</th>
         </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let propietario of Propietario; let iControl=index" >
+          <tr *ngFor="let propietario of Propietario | paginate: {itemsPerPage:5, currentPage: page} ">
             <td>{{ propietario["id"] }}</td>
             <td>{{ propietario["identificacion"] }}</td>
             <td>{{ propietario["nombre"] }}</td>
@@ -35,9 +42,8 @@
           </tr>
         </tbody>
     </table>
+    <br />
+    <pagination-controls (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+  </div>
 
-  </div>
-  <div class="card-footer text-muted">
-    Paginación
-  </div>
 </div>

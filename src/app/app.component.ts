@@ -12,6 +12,7 @@ export class AppComponent {
   displayedColumns: string[] = ['id', 'nombre', 'apellidos', 'identificacion','fecha_nacimiento','direccion','telefono','email','acciones'];
   public dataSource=[];
   public propietario:any=[];
+  public vehiculo:any=[];
   public new=false;
   public edit=false;
   public filterData=[];
@@ -19,6 +20,7 @@ export class AppComponent {
   public arrowDown:boolean=false;
   constructor(public _crudpropietarioService:CrudpropietarioService){
     this.getData();
+    this.getDataV();
 
   }
 
@@ -39,6 +41,18 @@ export class AppComponent {
 
   async getData(){
     let res:any= await this._crudpropietarioService.getData();
+    this.dataSource=res['data'];
+    this.filterData=this.dataSource;
+  }
+
+  async getDataV(){
+    let res:any= await this._crudpropietarioService.getDataV();
+    this.dataSource=res['data'];
+    this.filterData=this.dataSource;
+  }
+
+  async getDataI(){
+    let res:any= await this._crudpropietarioService.getDataI();
     this.dataSource=res['data'];
     this.filterData=this.dataSource;
   }
@@ -64,11 +78,27 @@ export class AppComponent {
     }
   }
 
+  async insertV(){
+    let res:any = await this._crudpropietarioService.insertDataV(this.vehiculo.placa,this.vehiculo.vin,this.vehiculo.linea_id,this.vehiculo.cilindrada,this.vehiculo.color_id,this.vehiculo.chasis,this.vehiculo.tipo_vehiculo_id);
+    if(res['status']=="200"){
+      alert('Registro creado correctamente');
+      this.getDataV();
+    }
+  }
+
   async update(){
     let res:any=await this._crudpropietarioService.insertData(this.propietario.nombre,this.propietario.apellidos,this.propietario.identificacion,this.propietario.fecha_nacimiento,this.propietario.direccion,this.propietario.telefono,this.propietario.email);
     if(res['status']=="200"){
       alert('Registro editado correctamente');
       this.getData();
+    }
+  }
+
+  async updateV(){
+    let res:any= await this._crudpropietarioService.insertDataV(this.vehiculo.placa,this.vehiculo.vin,this.vehiculo.linea_id,this.vehiculo.cilindrada,this.vehiculo.color_id,this.vehiculo.chasis,this.vehiculo.tipo_vehiculo_id);
+    if(res['status']=="200"){
+      alert('Registro editado correctamente');
+      this.getDataV();
     }
   }
 
@@ -82,6 +112,18 @@ export class AppComponent {
       this.edit=false;
     }
   }
+
+  async viewV(type:any,element:any){
+    this.new=true;
+    if(type==1){
+      this.edit=true;
+      this.vehiculo=this.clone(element);
+    }else{
+      this.vehiculo=[];
+      this.edit=false;
+    }
+  }
+
 
   clone(_item:any):any{
     return JSON.parse(JSON.stringify(_item));
@@ -97,6 +139,14 @@ export class AppComponent {
     if(res['status']=="200"){
       alert('registro eliminado correctamente');
       this.getData();
+    }
+  }
+
+  async deleteV(vehiculo:any){
+    let res:any= await this._crudpropietarioService.deleteDataV(vehiculo);
+    if(res['status']=="200"){
+      alert('registro eliminado correctamente');
+      this.getDataV();
     }
   }
 

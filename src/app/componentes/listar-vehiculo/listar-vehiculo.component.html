@@ -1,7 +1,16 @@
-<br>
+<br />
+<h3>Listar vehículos</h3>
 <div class="card">
   <div class="card-header">
-    Módulo de Vehículos
+    <div style="display: flex; justify-content: space-between;">
+      <div> <button class="btn btn-success" routerLink="/agregar-vehiculo" type="button">Crear</button></div>
+      <div class="pull-right">
+        <form class="d-flex" style="display: flex; justify-content: flex-end">
+         <!--<input class="form-control me-2" tabindex="-1" type="search"  aria-label="Buscar" >-->
+        <!--<button class="btn btn-outline-primary" type="submit">Buscar</button>-->
+      </form>
+    </div>
+    </div>
   </div>
   <div class="card-body">
     <table class="table table-striped|sm|bordered|hover|inverse table-inverse table-responsive">
@@ -10,36 +19,31 @@
           <th>Código</th>
           <th>Placa</th>
           <th>Vin</th>
-          <th>Marca</th>
           <th>Línea</th>
-          <th>Cilindrada</th>
+          <th>Cilindraje</th>
           <th>Color</th>
           <th>Chasis</th>
-          <th>Tipo de vehículo</th>
-          <th>Modelo</th>
-          <th>Acciones</th>
+          <th>Tipo de Vehículo</th>
+          <th class="justify-center">Acciones</th>
         </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>PBI6933</td>
-            <td>effgegeggf654351</td>
-            <td>Honda</td>
-            <td>Civic</td>
-            <td>1900</td>
-            <td>Negro</td>
-            <td>347frrgttscrty</td>
-            <td>Turismo</td>
-            <td>Lujo</td>
-            <td>Editar | Eliminar</td>
+          <tr *ngFor="let vehiculo of Vehiculo | paginate: {itemsPerPage:5, currentPage: page} ">
+            <td>{{ vehiculo["id"] }}</td>
+            <td>{{ vehiculo["placa"] }}</td>
+            <td>{{ vehiculo["vin"] }}</td>
+            <td>{{ vehiculo["linea_id"] }}</td>
+            <td>{{ vehiculo["cilindrada"] }}</td>
+            <td>{{ vehiculo["color_id"] }}</td>
+            <td>{{ vehiculo["chasis"] }}</td>
+            <td>{{ vehiculo["tipo_vehiculo_id"] }}</td>
+            <td>
+              <a class="btn btn-info" routerLink="/editar-vehiculo/{{ vehiculo['id'] }}">  Editar </a> | <a class="btn btn-danger" (click)="borrar(vehiculo['id'])">Borrar</a>
           </tr>
         </tbody>
     </table>
+    <br />
+    <pagination-controls (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+  </div>
 
-  </div>
-  <div class="card-footer text-muted">
-    Paginación
-  </div>
 </div>
-

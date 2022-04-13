@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CrudpropietarioService } from 'src/app/servicio/crudpropietario.service';
 
+
 @Component({
   selector: 'app-listar-propietario',
   templateUrl: './listar-propietario.component.html',
@@ -10,6 +11,8 @@ export class ListarPropietarioComponent implements OnInit {
   //Propietario: any;
   public Propietario=[];
   ruteador: any;
+  public page:number=0;
+  public filtroPropietario:string="";
 
   constructor(
     private crudpropietarioService:CrudpropietarioService) {

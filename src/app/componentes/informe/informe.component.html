@@ -1,0 +1,38 @@
+<br />
+<h3>Propietarios y Vehículos</h3>
+<div class="card">
+  <div class="card-header">
+    <div style="display: flex; justify-content: space-between;">
+      <div> <button class="btn btn-warning"   (click)="order(true)">Ordenar por placa</button></div>
+      <div class="pull-right">
+        <form class="d-flex" style="display: flex; justify-content: flex-end">
+        <input class="form-control me-2"  type="search"  aria-label="Buscar" [(name)]="filterValue" (keyup)="filter($event)" >
+        <button  class="btn btn-outline-primary"   (click)="clearFilter()">Limpiar</button>
+      </form>
+    </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <table class="table table-striped|sm|bordered|hover|inverse table-inverse table-responsive">
+      <thead class="thead-inverse|thead-default">
+        <tr>
+          <th>Propietario</th>
+          <th>Placa</th>
+          <th>Marca</th>
+          <th>Color</th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let informe of filterData | paginate: {itemsPerPage:5, currentPage: page} ">
+            <td>{{ informe["nombrepropietario"] }}</td>
+            <td>{{ informe["placa"] }}</td>
+            <td>{{ informe["marca"] }}</td>
+            <td>{{ informe["color"] }}</td>
+        </tbody>
+    </table>
+    <br />
+    <pagination-controls (pageChange)="page = $event" previousLabel="Anterior" nextLabel="Siguiente"></pagination-controls>
+  </div>
+
+</div>
+
